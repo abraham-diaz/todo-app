@@ -1,30 +1,38 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import AddTodoForm from "./components/AddTodoForm"
 import TodoList from "./components/TodoList"
 import { type Todo } from "./types/todo"
 
+const API_URL = "http://localhost:3000/api/todos"
+
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])
 
-  const addTodo = (text: string) => {
-    const newTodo: Todo = {
-      id: Date.now(),
-      text,
-      completed: false,
-    }
-    setTodos([...todos, newTodo])
+  useEffect(() => {
+    fetch(API_URL)
+      .then(res => res.json())
+      .then(setTodos)
+  }, [])
+
+  const addTodo = async (text: string) => {
+    const res = await fetch(API_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text }),
+    })
+    const newTodo = await res.json()
+    setTodos([newTodo, ...todos])
   }
 
-  const toggleTodo = (id: number) => {
-    setTodos(
-      todos.map((t) =>
-        t.id === id ? { ...t, completed: !t.completed } : t
-      )
-    )
+  const toggleTodo = async (id: number) => {
+    const res = await fetch(`${API_URL}/${id}`, { method: "PATCH" })
+    const updated = await res.json()
+    setTodos(todos.map(t => (t.id === id ? updated : t)))
   }
 
-  const deleteTodo = (id: number) => {
-    setTodos(todos.filter((t) => t.id !== id))
+  const deleteTodo = async (id: number) => {
+    await fetch(`${API_URL}/${id}`, { method: "DELETE" })
+    setTodos(todos.filter(t => t.id !== id))
   }
 
   return (

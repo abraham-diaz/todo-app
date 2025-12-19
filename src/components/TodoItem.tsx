@@ -12,7 +12,7 @@ const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
       <span
         onClick={() => onToggle(todo.id)}
         className={`flex-1 cursor-pointer ${
-          todo.completed ? "line-through text-gray-400" : ""
+          todo.completed ? "line-through text-gray-400" : "text-gray-800"
         }`}
       >
         {todo.text}
