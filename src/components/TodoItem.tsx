@@ -8,11 +8,11 @@ interface TodoItemProps {
 
 const TodoItem = ({ todo, onToggle, onDelete }: TodoItemProps) => {
   return (
-    <li className="flex justify-between items-center bg-gray-100 p-3 rounded-lg mb-2">
+    <li className="flex justify-between items-center bg-gray-700 p-3 rounded-lg mb-2">
       <span
         onClick={() => onToggle(todo.id)}
         className={`flex-1 cursor-pointer ${
-          todo.completed ? "line-through text-gray-400" : "text-gray-800"
+          todo.completed ? "line-through text-gray-500" : "text-white"
         }`}
       >
         {todo.text}
