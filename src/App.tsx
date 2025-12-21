@@ -3,7 +3,9 @@ import AddTodoForm from "./components/AddTodoForm"
 import TodoList from "./components/TodoList"
 import { type Todo } from "./types/todo"
 
-const API_URL = "http://localhost:3000/api/todos"
+const API_URL = import.meta.env.DEV
+  ? "http://localhost:3000/api/todos"
+  : "/api/todos"
 
 function App() {
   const [todos, setTodos] = useState<Todo[]>([])

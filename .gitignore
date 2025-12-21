@@ -26,3 +26,15 @@ dist-ssr
 
 CLAUDE.md
 .claude
+
+# Archivos sensibles
+.env
+.env.*
+*.pem
+*.key
+*.crt
+credentials.json
+secrets.json
+
+# Deploy scripts (contienen rutas/usuarios específicos)
+deploy/deploy.sh
