@@ -36,8 +36,8 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-6">
-      <div className="bg-gray-800 p-6 rounded-2xl shadow-lg w-full max-w-md">
+    <div className="min-h-screen bg-gray-900 text-white flex items-center justify-center p-0 md:p-6">
+      <div className="bg-gray-800 p-6 min-h-screen md:min-h-0 md:rounded-2xl shadow-lg w-full md:max-w-md">
         <h1 className="text-2xl font-bold text-center mb-4">
           Todo List
         </h1>
