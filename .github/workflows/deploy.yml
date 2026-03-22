@@ -34,9 +34,9 @@ jobs:
           host: ${{ secrets.SSH_HOST }}
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
-          port: ${{ secrets.SSH_PORT || 22 }}
+          port: 22
           script: |
-            cd ${{ secrets.APP_DIR || '~/todo-app' }}
+            cd ~/todo-app
             git pull origin main
             docker compose up -d --build --remove-orphans
             docker image prune -f
