@@ -35,6 +35,3 @@ CLAUDE.md
 *.crt
 credentials.json
 secrets.json
-
-# Deploy scripts (contienen rutas/usuarios específicos)
-deploy/deploy.sh
