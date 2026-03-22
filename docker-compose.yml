@@ -1,0 +1,14 @@
+services:
+  todo-app:
+    build: .
+    container_name: todo-app
+    restart: unless-stopped
+    ports:
+      - "3001:3001"
+    volumes:
+      - todo-data:/app/server/data
+    environment:
+      - NODE_ENV=production
+
+volumes:
+  todo-data:
